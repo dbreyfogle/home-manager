@@ -6,9 +6,6 @@ inoremap <C-c> <Esc>
 " Set leader
 let mapleader=" "
 
-" Load the system clipboard register
-noremap <Leader>c "+
-
 " Delete without affecting other registers
 noremap <Leader>d "_d
 noremap <Leader>D "_D
@@ -54,6 +51,9 @@ set splitbelow
 
 " Keep cursor above/below N lines
 set scrolloff=12
+
+" Use system clipboard
+set clipboard=unnamedplus
 
 " Enable mouse usage
 set mouse=a
