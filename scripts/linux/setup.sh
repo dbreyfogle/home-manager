@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # [[ System settings ]]
 
@@ -13,10 +13,8 @@ for dir in /var/lib/machines /var/lib/portables /var/lib/libvirt; do
     else
         sudo btrfs subvolume create "$dir"
     fi
+    sudo chattr +C "$dir"
 done
-sudo chattr +C /var/lib/machines
-sudo chattr +C /var/lib/portables
-sudo chattr +C /var/lib/libvirt
 
 # Dual boot clock
 sudo timedatectl set-local-rtc 1
@@ -41,8 +39,8 @@ chsh -s /bin/zsh
 
 # NVIDIA drivers
 sudo dnf install -y \
-  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-"$(rpm -E %fedora)".noarch.rpm \
+  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-"$(rpm -E %fedora)".noarch.rpm
 sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
 
@@ -76,8 +74,8 @@ flatpak install -y flathub org.mozilla.firefox
 
 # Gnome
 # alphabetical app grid / tiling shell
-for i in $(seq 1 9); do gsettings set org.gnome.shell.keybindings switch-to-application-${i} "[]"; done
-for i in $(seq 1 9); do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-${i} "['<Super>${i}']"; done
+for i in $(seq 1 9); do gsettings set org.gnome.shell.keybindings switch-to-application-"${i}" "[]"; done
+for i in $(seq 1 9); do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-"${i}" "['<Super>${i}']"; done
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>J']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>K']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Shift><Super>J']"
