@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # [[ System settings ]]
 
@@ -13,10 +13,8 @@ for dir in /var/lib/machines /var/lib/portables /var/lib/libvirt; do
     else
         sudo btrfs subvolume create "$dir"
     fi
+    sudo chattr +C "$dir"
 done
-sudo chattr +C /var/lib/machines
-sudo chattr +C /var/lib/portables
-sudo chattr +C /var/lib/libvirt
 
 # Dual boot clock
 sudo timedatectl set-local-rtc 1
