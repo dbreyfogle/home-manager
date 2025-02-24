@@ -106,6 +106,7 @@
         nodePackages.prettier
         pyright
         rubocop
+        rubyPackages.solargraph
         ruff
         shellcheck
         shfmt
