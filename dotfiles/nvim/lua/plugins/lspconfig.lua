@@ -61,6 +61,7 @@ return {
 		})
 		require("lspconfig").nixd.setup({})
 		require("lspconfig").pyright.setup({})
+		require("lspconfig").solargraph.setup({})
 		require("lspconfig").taplo.setup({})
 		require("lspconfig").terraformls.setup({})
 		require("lspconfig").yamlls.setup({

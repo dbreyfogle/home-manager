@@ -10,7 +10,6 @@ return {
 			go = { "golangcilint" },
 			markdown = { "markdownlint-cli2", "vale" },
 			python = { "ruff", "mypy" },
-			ruby = { "rubocop" },
 			terraform = { "tflint" },
 			["yaml.ansible"] = { "ansible_lint" },
 		}
