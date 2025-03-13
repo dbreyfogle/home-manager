@@ -75,6 +75,7 @@
       enable = true;
       settings = {
         k9s = {
+          noExitOnCtrlC = true;
           ui = {
             logoless = true;
             noIcons = true;
