@@ -46,9 +46,6 @@
 
     git = {
       enable = true;
-      aliases = {
-        graph = "log --graph --oneline --decorate --all";
-      };
       ignores = [
         "*~"
         "*.swp"
