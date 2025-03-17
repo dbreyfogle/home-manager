@@ -114,10 +114,10 @@ return {
 		-- Apply kubernetes schema to custom yaml.kubernetes filetypes
 		vim.api.nvim_create_autocmd({ "LspAttach", "FileType" }, {
 			callback = function()
-				if vim.bo.filetype == "yaml.kubernetes" then
+				if vim.bo.filetype == "yaml.kubernetes" then -- filetype matched by pattern rules or applied manually
 					local client = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf(), name = "yamlls" })[1]
 					if client then
-						local set = {}
+						local set = {} -- create the set of names which are already part of the schema table
 						if not client.config.settings.yaml.schemas["kubernetes"] then
 							client.config.settings.yaml.schemas["kubernetes"] = {}
 						else
@@ -126,7 +126,7 @@ return {
 							end
 						end
 						local buf_name = vim.api.nvim_buf_get_name(0)
-						if not set[buf_name] then
+						if not set[buf_name] then -- add the current name if not present
 							table.insert(client.config.settings.yaml.schemas["kubernetes"], buf_name)
 							client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
 						end

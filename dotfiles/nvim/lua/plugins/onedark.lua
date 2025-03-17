@@ -9,6 +9,6 @@ return {
 			-- lualine = { transparent = true },
 		})
 		require("onedark").load()
-		vim.cmd("hi ModeMsg guifg=NONE")
+		vim.cmd("hi ModeMsg guifg=NONE") -- remove styling
 	end,
 }
