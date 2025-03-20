@@ -3,36 +3,16 @@
 {
   programs.home-manager.enable = true;
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "terraform"
-    ];
-
   home.packages = with pkgs; [
-    ansible
-    argocd
     asciinema
     asciinema-agg
-    bundix
     git-filter-repo
-    kubectl
-    kubernetes-helm
-    minikube
     nerd-fonts.fira-code
-    nodejs
-    python3
-    ruby
-    terraform
     tldr
     vim
   ];
 
   programs = {
-    awscli = {
-      enable = true;
-    };
-
     direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -61,10 +41,6 @@
     };
 
     gh = {
-      enable = true;
-    };
-
-    go = {
       enable = true;
     };
 
