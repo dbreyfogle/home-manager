@@ -74,7 +74,6 @@
         helm-ls
         lua-language-server
         markdownlint-cli2
-        mypy
         nixd
         nixfmt-rfc-style
         nodePackages.prettier
