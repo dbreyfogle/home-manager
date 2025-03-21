@@ -101,12 +101,6 @@
 
     tmux = {
       enable = true;
-      plugins = with pkgs.tmuxPlugins; [
-        continuum
-        logging
-        resurrect
-        yank
-      ];
       extraConfig = ''
         # [[ Keymaps ]]
 
@@ -164,6 +158,23 @@
         set -g status-style bg=default,fg=white
         setw -g window-status-current-style fg=green,bold
       '';
+      plugins = with pkgs.tmuxPlugins; [
+        logging
+        yank
+        {
+          plugin = continuum;
+          extraConfig = ''
+            set -g @continuum-save-interval '5'
+          '';
+        }
+        {
+          plugin = resurrect;
+          extraConfig = ''
+            # Fix parsing issue with nix paths (tmp file for macOS compatibility)
+            set -g @resurrect-hook-post-save-all 'sed "/^pane\t.*\tnvim\t/ s#\(\tnvim\t\).*#\1:nvim#" ${config.home.homeDirectory}/.tmux/resurrect/last > /tmp/tmux-resurrect && mv /tmp/tmux-resurrect ${config.home.homeDirectory}/.tmux/resurrect/last'
+          '';
+        }
+      ];
     };
 
     zsh = {
