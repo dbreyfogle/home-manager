@@ -31,6 +31,7 @@
         "*.swp"
         ".DS_Store"
         ".direnv/"
+        "Session.vim"
       ];
       userEmail = "27653146+dbreyfogle@users.noreply.github.com";
       userName = "Danny Breyfogle";
