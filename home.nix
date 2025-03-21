@@ -120,8 +120,8 @@
         bind % split-window -h -c "#{pane_current_path}"
 
         # Prompt navigation (OSC 133)
-        bind b copy-mode\; send-keys -X previous-prompt
-        bind B copy-mode\; send-keys -X next-prompt
+        bind K copy-mode\; send-keys -X previous-prompt
+        bind J copy-mode\; send-keys -X next-prompt
 
         # Convenience shortcuts
         bind -r "<" swap-window -d -t -1
@@ -141,6 +141,10 @@
 
         # Increase history limit
         set -g history-limit 10000
+
+        # Vim compatibility
+        set -gs escape-time 10
+        set -g focus-events on
 
         # Vim-style copy
         setw -g mode-keys vi
